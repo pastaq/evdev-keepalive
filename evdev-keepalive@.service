@@ -1,0 +1,8 @@
+[Unit]
+Description=Xbox360 wired controller configuration on %I
+StopWhenUnneeded=true
+
+[Service]
+# Keep the event device open, so that the controller firmware does not
+# reset the USB device.
+ExecStart=/usr/local/bin/evdev_keepalive %i
