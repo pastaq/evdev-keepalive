@@ -1,5 +1,14 @@
+### Embedded Ayaneo controller. ###
 # Don't perform MTP probing on the integrated Xbox360 controller.
 SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="028e", ENV{MTP_NO_PROBE}="1"
 
 # Setup event device of Xbox360 controller.
 ACTION=="add", KERNEL=="event[0-9]*", SUBSYSTEM=="input", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="028e", ATTRS{manufacturer}=="ZhiXu", ATTRS{product}=="Controller", TAG+="systemd", ENV{SYSTEMD_WANTS}="evdev-keepalive@$kernel.service"
+
+### 8BitDo Ultimate Controller Bluetooth (2.4GHz mode) ###
+SUBSYSTEM=="usb", ATTR{idVendor}=="2dc8", ATTR{idProduct}=="6009", ENV{MTP_NO_PROBE}="1"
+ACTION=="add", SUBSYSTEM=="input", ATTRS{idVendor}=="2dc8", ATTRS{idProduct}=="6009", TAG+="systemd", ENV{SYSTEMD_WANTS}="evdev-keepalive@$kernel.service"
+
+### 8BitDo Pro 3 (2.4GHz mode) ###
+SUBSYSTEM=="usb", ATTR{idVendor}=="2dc8", ATTR{idProduct}=="310b", ENV{MTP_NO_PROBE}="1"
+ACTION=="add", SUBSYSTEM=="input", ATTRS{idVendor}=="2dc8", ATTRS{idProduct}=="310b", TAG+="systemd", ENV{SYSTEMD_WANTS}="evdev-keepalive@$kernel.service"
